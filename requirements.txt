@@ -1,0 +1,9 @@
+pandas
+numpy
+matplotlib
+seaborn
+plotly
+requests
+scikit-learn
+ipykernel
+starvers @ git+https://github.com/GreenfishK/starvers.git
