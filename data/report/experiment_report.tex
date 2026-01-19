@@ -174,10 +174,10 @@ Key Findings:
 5. Categorical Consistency: All categorical variables have expected, consistent values
 Data Quality Summary: High quality dataset with minimal issues.
 \subsection{visual exploration}
-
+Task 2d: Visual exploration created 9-plot dashboard including class distribution, age distribution, height vs weight scatter, gender distribution, correlation heatmap, physical activity frequency, water consumption, weight by obesity level boxplot, and technology use time. Saved to data/datasets/obesity/data\_exploration.png
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\linewidth]{}
+    \includegraphics[width=0.8\linewidth]{data/datasets/obesity/data_exploration.png}
     \caption{visual analysis of obesity factors.}
     \label{fig:viz_2d}
 \end{figure}
@@ -220,7 +220,7 @@ Class Imbalance Analysis:
 2. **Feature Engineering:** Calculated 'BMI' and created 'Age\_Group' bins.
 3. **Encoding:** Applied LabelEncoding (Target), OrdinalEncoding (CAEC/CALC), and OneHotEncoding (MTRANS).
 4. **Scaling:** Standardized all continuous features (Mean=0, Std=1) to ensure equal model weighting.
-\subsection{Rejected Steps} 
+\subsection{Rejected Steps} Rejected preprocessing steps: outlier removal retained valid obesity cases, no imputation needed due to zero missing values, PCA skipped to maintain interpretability
 \subsection{Derived Attributes} Analysis of Derived Attributes (Feature Engineering):
 
 We analyzed which new features could help the model learn better patterns:
@@ -281,8 +281,68 @@ the final random forest model achieved a test accuracy of 0.9856.
 this meets our data mining success criteria.
 we compared it against kaggle benchmarks (95-99\%) and a random baseline.
 \textbf{Resulting Test Accuracy:} 0.9856459330143541
+\subsection{Baseline and State-of-the-Art Comparison}
+Task 5b: Baseline and State-of-the-Art Performance Evaluation
+
+BASELINES EVALUATED:
+1. Random Classifier: 0.1722 accuracy
+   - Predicts uniformly across all 7 classes
+   - Expected performance: \textasciitilde{}14.3\% (1/7)
+
+2. Majority Class Classifier: 0.1675 accuracy
+   - Always predicts the most frequent class: 2
+   - Trivial acceptor baseline
+
+3. Stratified Classifier: 0.1292 accuracy
+   - Predicts proportional to training class distribution
+
+STATE-OF-THE-ART:
+- Original authors (Palechor 2019): 97.14\% with MLP
+- Kaggle competitions: 95-99\% range
+- Our model: 0.9856 (98.56\%)
+
+PERFORMANCE COMPARISON:
+- Our model exceeds random baseline by 81.3 percentage points
+- Our model exceeds majority baseline by 81.8 percentage points
+- Performance relative to SOTA: Within range
+
+The model significantly outperforms all baselines, demonstrating that it has
+learned meaningful patterns from the data rather than memorizing class distributions.
+\subsection{Detailed Performance Analysis}
+\
+\subsection{Success Criteria Assessment}
+Task 5d: Comparison with Business Success Criteria
+
+DATA MINING SUCCESS CRITERIA RESULTS:
+1. Overall Accuracy ≥ 90\%: MET (0.9856)
+2a. Macro F1-score ≥ 0.85: MET (0.9851)
+2b. Min per-class recall ≥ 0.75: MET (0.9455)
+2c. Macro Precision ≥ 0.85: MET (0.9856)
+3. No systematic misclassification: MET
+4. Val/Test gap < 5\%: MET (0.0048)
+5. Reproducibility documented: MET
+6. Baseline improvement > 60pp: MET (81.3pp)
+
+Total: 8/8 criteria met
+
+BUSINESS OBJECTIVES ASSESSMENT:
+1. Early Risk Identification: ACHIEVED
+   - Accuracy sufficient for reliable population screening
+
+2. Resource Allocation: ACHIEVED
+   - Balanced performance enables targeted interventions
+
+3. Feature Importance: ACHIEVED
+   - Model provides interpretable insights for policy design
+
+4. Demographic Generalization: ACHIEVED
+   - Gender bias: 1.11\% difference
+
+5. Interpretability: ACHIEVED
+   - Random Forest allows stakeholder-friendly explanations\
 \subsection{Bias and Fairness Analysis}
-accuracy female: 0.9798, accuracy male: 0.9909
+accuracy female: 0.9798, accuracy male: 0.9909\\
+
 
 %% --- 6. DEPLOYMENT ---
 \section{Deployment}
